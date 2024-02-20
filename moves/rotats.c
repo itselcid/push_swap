@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void ra(Node** head) 
+void rotate(Node** head)
 {
     Node* first = *head;
     Node* current = *head;
@@ -12,21 +12,23 @@ void ra(Node** head)
     *head = first->next;
     first->next = NULL;
     current->next = first;
+}
+
+void ra(Node** head) 
+{
+    rotate(head);
     write(1, "ra\n", 3);
 }
 
-void rra(Node** head) 
+void rb(Node** head) 
 {
-    Node* last;
-    Node* current = *head;
+    rotate(head);
+    write(1, "rb\n", 3);
+}
 
-    while (current->next->next != NULL) {
-        current = current->next;
-    }
-
-    last = current->next;
-    current->next = NULL;
-    last->next = *head;
-    *head = last;
-    write(1, "rra\n", 4);
+void rr(Node** a, Node** b) 
+{
+    rotate(a);
+    rotate(b);
+    write(1, "rr\n", 3);
 }
