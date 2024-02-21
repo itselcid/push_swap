@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
-SRC = main.c push_swap.c sort.c \
+SRC = main.c push_swap.c sort.c push_from_a_to_b.c \
 					moves/rotats.c moves/swaps.c moves/pushes.c moves/reverse_rotats.c
 OBJ = $(SRC:.c=.o)
 

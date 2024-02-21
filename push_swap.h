@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:20 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/20 12:00:23 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:46:33 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@
 #include <unistd.h>
 #include <limits.h>
 
-typedef struct Node {
+typedef struct Node 
+{
     int data;
-    int moves;
     struct Node* next;
 } Node;
 
 void insertNode(Node** head, int data);
 void displayList(Node* head);
+void is_sorted(Node** stackA);
 void sort_three(Node **n);
 int size(Node* stack);
 int max(Node* stack);
@@ -37,6 +38,10 @@ int index_from_b(int Adata,Node* stackB);
 int index_from_a(int Bdata,Node* stackA);
 int best_move(Node* stackA, Node* stackB,int* index);
 void push_to_b(Node** stackA, Node** stackB,int Adata_to_push ,int index_to_push_from_A_to_B);
+void handle_first_case(Node** stackA, Node** stackB, int* index_to_push_from_A_to_B, int* index_b);
+void handle_second_case(Node** stackA, Node** stackB, int* difference_stackA_indexA, int* difference_stackB_indexB);
+void handle_third_case(Node** stackA, Node** stackB, int* index_to_push_from_A_to_B, int* difference_stackB_indexB);
+void handle_fourth_case(Node** stackA, Node** stackB, int* difference_stackA_indexA, int* index_b);
 void push_to_a(Node** stackA, Node** stackB);
 void sort_stack(Node** stackA, Node** stackB);
 void rotate_until_sorted(Node** stackA);
