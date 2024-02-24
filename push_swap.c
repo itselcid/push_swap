@@ -6,23 +6,28 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:07 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/21 11:37:10 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/24 22:52:06 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insertNode(Node **head, int data)
+void	insertnode(t_list **head, long data)
 {
-	Node	*newNode;
-	Node	*current;
+	t_list	*newnode;
+	t_list	*current;
 
-	newNode = (Node *)malloc(sizeof(Node));
-	newNode->data = data;
-	newNode->next = NULL;
+	if (data < INT_MIN || data > INT_MAX)
+	{
+		write(1, "Error\n", 6);
+		exit(1);
+	}
+	newnode = (t_list *)malloc(sizeof(t_list));
+	newnode->data = data;
+	newnode->next = NULL;
 	if (*head == NULL)
 	{
-		*head = newNode;
+		*head = newnode;
 		return ;
 	}
 	current = *head;
@@ -30,12 +35,13 @@ void	insertNode(Node **head, int data)
 	{
 		current = current->next;
 	}
-	current->next = newNode;
+	current->next = newnode;
 }
-int	size(Node *stack)
+
+int	size(t_list *stack)
 {
 	int		count;
-	Node	*temp;
+	t_list	*temp;
 
 	count = 0;
 	temp = stack;
@@ -46,39 +52,38 @@ int	size(Node *stack)
 	}
 	return (count);
 }
-void	is_sorted(Node **stackA)
-{
-	Node	*temp;
 
-	temp = *stackA;
-	while (temp->next)
+void	is_sorted_or_double(t_list *stackA)
+{
+	t_list	*temp;
+	int		sorted;
+
+	sorted = 0;
+	while (stackA->next)
 	{
-		if (temp->data > temp->next->data)
+		if (stackA->data > stackA->next->data)
+			sorted = 1;
+		temp = stackA->next;
+		while (temp)
 		{
-			printf("stackA is not sorted\n");
-			return ;
+			if (stackA->data == temp->data)
+			{
+				write(1, "Error\n", 6);
+				exit(1);
+			}
+			temp = temp->next;
 		}
-		temp = temp->next;
+		stackA = stackA->next;
 	}
-	printf("stackA is sorted\n");
-}
-void	displayList(Node *head)
-{
-	Node	*current;
-
-	current = head;
-	while (current != NULL)
-	{
-		printf("%d \n", current->data);
-		current = current->next;
-	}
+	if (sorted == 0)
+		exit(0);
 }
 
-void	sort_three(Node **n)
+void	sort_three(t_list **n)
 {
-	int a;
-	int b;
-	int c;
+	int	a;
+	int	b;
+	int	c;
 
 	a = (*n)->data;
 	b = (*n)->next->data;
@@ -98,5 +103,17 @@ void	sort_three(Node **n)
 	{
 		sa(n);
 		ra(n);
+	}
+}
+
+void	free_stack(t_list **lst)
+{
+	t_list	*temp;
+
+	while (*lst)
+	{
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp);
 	}
 }

@@ -6,18 +6,18 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:44:22 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/21 12:35:34 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/24 22:53:19 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	index_from_a(int Bdata, Node *stack_a)
+int	index_from_a(int Bdata, t_list *stack_a)
 {
 	int		index;
 	int		i;
 	int		l9rib_lkbir;
-	Node	*temp;
+	t_list	*temp;
 
 	index = -1;
 	i = 0;
@@ -38,7 +38,7 @@ int	index_from_a(int Bdata, Node *stack_a)
 	return (index);
 }
 
-void	push_to_a(Node **stack_a, Node **stackB)
+void	push_to_a(t_list **stack_a, t_list **stackB)
 {
 	int	index_a;
 	int	difference_stacka_indexa;
@@ -57,28 +57,7 @@ void	push_to_a(Node **stack_a, Node **stackB)
 	}
 }
 
-void	sort_stack(Node **stack_a, Node **stackB)
-{
-	int	index_to_push_from_a_to_b;
-	int	data_with_least_moves;
-
-	if (size(*stack_a) > 3)
-		pb(stack_a, stackB);
-	if (size(*stack_a) > 3)
-		pb(stack_a, stackB);
-	while (size(*stack_a) > 3)
-	{
-		data_with_least_moves = best_move(*stack_a, *stackB,
-				&index_to_push_from_a_to_b);
-		push_to_b(stack_a, stackB, data_with_least_moves,
-			index_to_push_from_a_to_b);
-		pb(stack_a, stackB);
-	}
-	sort_three(stack_a);
-	push_to_a(stack_a, stackB);
-}
-
-void	rotate_until_sorted(Node **stack_a)
+void	rotate_until_sorted(t_list **stack_a)
 {
 	int	index;
 	int	difference_stacka_indexa;
@@ -93,27 +72,53 @@ void	rotate_until_sorted(Node **stack_a)
 			rra(stack_a);
 }
 
+void	sort_stack(t_list **stack_a, t_list **stackB)
+{
+	int	index_to_push_from_a_to_b;
+	int	data_with_least_moves;
+	int	index_a;
+
+	index_a = 0;
+	if (size(*stack_a) > 3)
+		pb(stack_a, stackB);
+	if (size(*stack_a) > 3)
+		pb(stack_a, stackB);
+	while (size(*stack_a) > 3)
+	{
+		data_with_least_moves = best_move(*stack_a, *stackB,
+				&index_to_push_from_a_to_b, index_a);
+		push_to_b(stack_a, stackB, data_with_least_moves,
+			index_to_push_from_a_to_b);
+		pb(stack_a, stackB);
+	}
+	sort_three(stack_a);
+	push_to_a(stack_a, stackB);
+	rotate_until_sorted(stack_a);
+}
+
 int	main(int argc, char **argv)
 {
-	Node	*stack_a;
-	Node	*stack_b;
+	t_list	*stack_a;
+	t_list	*stack_b;
 	int		i;
+	char	*str;
 
-	stack_a = NULL;
-	stack_b = NULL;
+	if (argc == 1)
+		return (0);
 	i = 1;
 	while (i < argc)
 	{
-		insertNode(&stack_a, atoi(argv[i]));
-		i++;
+		check_empty(argv[i]);
+		str = ft_strjoin(str, argv[i++]);
 	}
+	argv = ft_split(str, ' ');
+	i = 0;
+	while (argv[i])
+		insertnode(&stack_a, ft_atoi(argv[i++]));
+	is_sorted_or_double(stack_a);
 	if (argc == 4)
 		sort_three(&stack_a);
 	else
-	{
 		sort_stack(&stack_a, &stack_b);
-		rotate_until_sorted(&stack_a);
-	}
-	is_sorted(&stack_a);
-	return (0);
+	free_stack(&stack_a);
 }

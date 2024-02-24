@@ -6,13 +6,13 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:03:15 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/21 12:39:51 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/24 22:14:01 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	handle_first_case(Node **stackA, Node **stackB,
+void	handle_first_case(t_list **stackA, t_list **stackB,
 		int *index_to_push_from_A_to_B, int *index_b)
 {
 	while (*index_to_push_from_A_to_B > 0 && *index_b > 0)
@@ -33,7 +33,7 @@ void	handle_first_case(Node **stackA, Node **stackB,
 	}
 }
 
-void	handle_second_case(Node **stackA, Node **stackB,
+void	handle_second_case(t_list **stackA, t_list **stackB,
 		int *difference_stacka_indexa, int *difference_stackb_indexb)
 {
 	while (*difference_stacka_indexa > 0 && *difference_stackb_indexb > 0)
@@ -54,7 +54,7 @@ void	handle_second_case(Node **stackA, Node **stackB,
 	}
 }
 
-void	handle_third_case(Node **stackA, Node **stackB,
+void	handle_third_case(t_list **stackA, t_list **stackB,
 		int *index_to_push_from_A_to_B, int *difference_stackb_indexb)
 {
 	while (*index_to_push_from_A_to_B > 0)
@@ -69,7 +69,7 @@ void	handle_third_case(Node **stackA, Node **stackB,
 	}
 }
 
-void	handle_fourth_case(Node **stackA, Node **stackB,
+void	handle_fourth_case(t_list **stackA, t_list **stackB,
 		int *difference_stacka_indexa, int *index_b)
 {
 	while (*difference_stacka_indexa > 0)
@@ -84,7 +84,7 @@ void	handle_fourth_case(Node **stackA, Node **stackB,
 	}
 }
 
-void	push_to_b(Node **stackA, Node **stackB, int Adata_to_push,
+void	push_to_b(t_list **stackA, t_list **stackB, int Adata_to_push,
 		int index_to_push_from_A_to_B)
 {
 	int	index_b;
