@@ -1,9 +1,14 @@
 #include "../push_swap.h"
 
-void rotate(Node** head)
+void rotate(t_list** head)
 {
-    Node* first = *head;
-    Node* current = *head;
+    t_list* first = *head;
+    t_list* current = *head;
+
+	if (*head == NULL || (*head)->next == NULL) 
+	{
+		return;
+	}
 
     while (current->next != NULL) {
         current = current->next;
@@ -14,21 +19,26 @@ void rotate(Node** head)
     current->next = first;
 }
 
-void ra(Node** head) 
+void ra(t_list** head) 
 {
     rotate(head);
     write(1, "ra\n", 3);
 }
 
-void rb(Node** head) 
+void rb(t_list** head) 
 {
     rotate(head);
     write(1, "rb\n", 3);
 }
 
-void rr(Node** a, Node** b) 
+void rr(t_list** a, t_list** b) 
 {
     rotate(a);
     rotate(b);
     write(1, "rr\n", 3);
+}
+void rr_bonus(t_list** a, t_list** b) 
+{
+    rotate(a);
+    rotate(b);
 }

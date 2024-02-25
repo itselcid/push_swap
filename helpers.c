@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:36:26 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/24 22:13:14 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:41:11 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,25 +85,33 @@ long	ft_atoi(const char *str)
 	return (sign * result);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_join(char const *s1, char const *s2)
 {
-	int		total;
-	char	*str;
+    int i ;
+	int j ;
+	int k ;
+    char *str;
 
-	if (s1 == NULL)
-		return (ft_strdup(s2));
-	if (s2 == NULL)
-		return (ft_strdup(s1));
-	total = ft_strlen(s1) + ft_strlen(s2) + 2;
-	str = (char *)malloc(sizeof(char) * total);
-	if (str == NULL)
-		return (NULL);
-	ft_strlcpy(str, s1, total);
-	ft_strlcat(str, " ", total);
-	ft_strlcat(str, s2, total);
-	return (str);
+	i = 0;
+	j = 0;
+    while (s1 && s1[i])
+			 i++;
+    while (s2 && s2[j])
+			 j++;
+    str = (char *)malloc(sizeof(char) * (i + j + 2));
+    if (str == NULL)
+        return (NULL);
+	k = 0;
+    i = 0;
+    while (s1 && s1[i])
+        str[k++] = s1[i++];
+    str[k++] = ' ';
+    j = 0;
+    while (s2 && s2[j])
+        str[k++] = s2[j++];
+    str[k] = '\0';
+    return (str);
 }
-
 void	check_empty(char *av)
 {
 	int	i;
