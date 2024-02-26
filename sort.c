@@ -32,7 +32,7 @@ int	index_from_b(int Adata, t_list *stackB)
 	temp = stackB;
 	while (stackB)
 	{
-		if (stackB->data < Adata && stackB->data >=l9rib )
+		if (stackB->data < Adata && stackB->data >= l9rib)
 		{
 			l9rib = stackB->data;
 			index = i;

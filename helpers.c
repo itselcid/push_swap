@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:36:26 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/26 11:55:52 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:04:57 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,9 @@ long	ft_atoi(const char *str)
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
-	{
 		result = (result * 10) + str[i++] - '0';
-	}
-	if (str[i] != '\0' || (sign == -1 && result == 0))
+	if (str[i] != '\0' || (sign == -1 && result == 0) || (sign == 1
+			&& result == 0))
 	{
 		write(2, "Error\n", 6);
 		exit(1);
@@ -75,33 +74,34 @@ long	ft_atoi(const char *str)
 	return (sign * result);
 }
 
-char *ft_join(char const *s1, char const *s2)
+char	*ft_join(char const *s1, char const *s2)
 {
-    int i ;
-	int j ;
-	int k ;
-    char *str;
+	int		i;
+	int		j;
+	int		k;
+	char	*str;
 
 	i = 0;
 	j = 0;
-    while (s1 && s1[i])
-			 i++;
-    while (s2 && s2[j])
-			 j++;
-    str = (char *)malloc(sizeof(char) * (i + j + 2));
-    if (str == NULL)
-        return (NULL);
+	while (s1 && s1[i])
+		i++;
+	while (s2 && s2[j])
+		j++;
+	str = (char *)malloc(sizeof(char) * (i + j + 2));
+	if (str == NULL)
+		return (NULL);
 	k = 0;
-    i = 0;
-    while (s1 && s1[i])
-        str[k++] = s1[i++];
-    str[k++] = ' ';
-    j = 0;
-    while (s2 && s2[j])
-        str[k++] = s2[j++];
-    str[k] = '\0';
-    return (str);
+	i = 0;
+	while (s1 && s1[i])
+		str[k++] = s1[i++];
+	str[k++] = ' ';
+	j = 0;
+	while (s2 && s2[j])
+		str[k++] = s2[j++];
+	str[k] = '\0';
+	return (str);
 }
+
 void	check_empty(char *av)
 {
 	int	i;
