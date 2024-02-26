@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 11:54:48 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/25 20:50:58 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:54:32 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,7 @@ int	main(int argc, char **argv)
 		insertnode(&stack_a, ft_atoi(argv[i++]));
 	check_double(stack_a);
 	 checker(&stack_a,&stack_b);
+	 free_stack(&stack_a);
+	 free_stack(&stack_b);
+	 
 }

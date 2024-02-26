@@ -6,32 +6,22 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:36:26 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/25 16:41:11 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:55:52 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max(t_list *stack)
+void	free_stack(t_list **lst)
 {
-	int	max;
-	int	max_index;
-	int	i;
+	t_list	*temp;
 
-	max = stack->data;
-	max_index = 0;
-	i = 0;
-	while (stack != NULL)
+	while (*lst)
 	{
-		if (stack->data > max)
-		{
-			max = stack->data;
-			max_index = i;
-		}
-		i++;
-		stack = stack->next;
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp);
 	}
-	return (max_index);
 }
 
 int	min(t_list *stack)
@@ -77,9 +67,9 @@ long	ft_atoi(const char *str)
 	{
 		result = (result * 10) + str[i++] - '0';
 	}
-	if (str[i] != '\0')
+	if (str[i] != '\0' || (sign == -1 && result == 0))
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	return (sign * result);
@@ -121,7 +111,7 @@ void	check_empty(char *av)
 		i++;
 	if (av[i] == '\0')
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 }

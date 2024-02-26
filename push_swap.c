@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:07 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/25 12:19:26 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:55:46 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	insertnode(t_list **head, long data)
 
 	if (data < INT_MIN || data > INT_MAX)
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	newnode = (t_list *)malloc(sizeof(t_list));
@@ -68,7 +68,7 @@ void	is_sorted_or_double(t_list *stackA)
 		{
 			if (stackA->data == temp->data)
 			{
-				write(1, "Error\n", 6);
+				write(2, "Error\n", 6);
 				exit(1);
 			}
 			temp = temp->next;
@@ -106,14 +106,24 @@ void	sort_three(t_list **n)
 	}
 }
 
-void	free_stack(t_list **lst)
+int	max(t_list *stack)
 {
-	t_list	*temp;
+	int	max;
+	int	max_index;
+	int	i;
 
-	while (*lst)
+	max = stack->data;
+	max_index = 0;
+	i = 0;
+	while (stack != NULL)
 	{
-		temp = *lst;
-		*lst = (*lst)->next;
-		free(temp);
+		if (stack->data > max)
+		{
+			max = stack->data;
+			max_index = i;
+		}
+		i++;
+		stack = stack->next;
 	}
+	return (max_index);
 }

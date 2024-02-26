@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 11:07:40 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/24 22:14:10 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:56:50 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	index_from_b(int Adata, t_list *stackB)
 
 	index = -1;
 	i = 0;
-	l9rib = -555555;
+	l9rib = INT_MIN;
 	temp = stackB;
 	while (stackB)
 	{
-		if (stackB->data < Adata && stackB->data > l9rib)
+		if (stackB->data < Adata && stackB->data >=l9rib )
 		{
 			l9rib = stackB->data;
 			index = i;

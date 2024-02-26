@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:44:22 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/25 17:53:35 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:51:40 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	index_from_a(int Bdata, t_list *stack_a)
 	temp = stack_a;
 	while (stack_a)
 	{
-		if (stack_a->data > Bdata && stack_a->data < l9rib_lkbir)
+		if (stack_a->data > Bdata && stack_a->data <= l9rib_lkbir)
 		{
 			l9rib_lkbir = stack_a->data;
 			index = i;
@@ -93,6 +93,7 @@ void	sort_stack(t_list **stack_a, t_list **stackB)
 	}
 	sort_three(stack_a);
 	push_to_a(stack_a, stackB);
+	free_stack(stackB);
 	rotate_until_sorted(stack_a);
 }
 
@@ -115,11 +116,10 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (argv[i])
 		insertnode(&stack_a, ft_atoi(argv[i++]));
-
-	printf("%d",stack_a->data);
-	return (0);
 	is_sorted_or_double(stack_a);
-	if (argc == 4)
+	if (argc == 3)
+		sa(&stack_a);
+	else if (argc == 4)
 		sort_three(&stack_a);
 	else
 		sort_stack(&stack_a, &stack_b);
