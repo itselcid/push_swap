@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:36:26 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/26 17:04:57 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/27 22:09:13 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,22 @@ long	ft_atoi(const char *str)
 	int		i;
 	int		sign;
 	long	result;
+	int		digit_count;
 
+	digit_count = 0;
 	result = 0;
 	sign = 1;
 	i = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
+	{
 		result = (result * 10) + str[i++] - '0';
-	if (str[i] != '\0' || (sign == -1 && result == 0) || (sign == 1
-			&& result == 0))
+		digit_count++;
+	}
+	if (str[i] != '\0' || digit_count == 0)
 	{
 		write(2, "Error\n", 6);
 		exit(1);
