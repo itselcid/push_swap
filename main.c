@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:44:22 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/27 23:35:24 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:45:41 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	sort_stack(t_list **stack_a, t_list **stackB)
 	}
 	sort_three(stack_a);
 	push_to_a(stack_a, stackB);
-	free_stack(stackB);
 	rotate_until_sorted(stack_a);
 }
 
@@ -113,9 +112,9 @@ int	main(int argc, char **argv)
 		str = ft_join(str, argv[i++]);
 	}
 	argv = ft_split(str, ' ');
-	i = 0;
-	while (argv[i])
-		insertnode(&stack_a, ft_atoi(argv[i++]));
+	i = -1;
+	while (argv[++i])
+		insertnode(&stack_a, ft_atoi(argv[i]),argv,argv[i]);
 	is_sorted_or_double(stack_a);
 	if (argc == 3)
 		sa(&stack_a);

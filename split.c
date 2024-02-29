@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:23:24 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/24 22:25:46 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:18:21 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ char	**ft_split(char const *s, char c)
 {
 	int		i;
 	char	**result;
+	char	*str;
 
+	str = (char *)s;
 	result = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (result == NULL)
 		return (NULL);
@@ -99,5 +101,6 @@ char	**ft_split(char const *s, char c)
 			s++;
 	}
 	result[i] = NULL;
+	free(str);
 	return (result);
 }

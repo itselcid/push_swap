@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:36:26 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/27 22:09:13 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:46:25 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	free_stack(t_list **lst)
 {
 	t_list	*temp;
 
+	if (*lst == NULL)
+		return ;
 	while (*lst)
 	{
 		temp = *lst;
@@ -24,28 +26,16 @@ void	free_stack(t_list **lst)
 	}
 }
 
-int	min(t_list *stack)
+void	free_av(char **av)
 {
-	t_list	*temp;
-	int		min;
-	int		min_index;
-	int		i;
+	int	i;
 
-	temp = stack;
-	min = temp->data;
-	min_index = 0;
 	i = 0;
-	while (temp != NULL)
+	while (av[i])
 	{
-		if (temp->data < min)
-		{
-			min = temp->data;
-			min_index = i;
-		}
+		free(av[i]);
 		i++;
-		temp = temp->next;
 	}
-	return (min_index);
 }
 
 long	ft_atoi(const char *str)
@@ -101,6 +91,7 @@ char	*ft_join(char const *s1, char const *s2)
 	while (s2 && s2[j])
 		str[k++] = s2[j++];
 	str[k] = '\0';
+	free((char *)s1);
 	return (str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:11:05 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/26 15:41:55 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:38:36 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	is_sorted(t_list *stackA, t_list *stackB)
 	if (stackA == NULL)
 	{
 		write(1, "KO\n", 3);
+		free_stack (&stackB);
 		exit(0);
 	}
 	sorted = 0;
@@ -45,6 +46,7 @@ void	is_sorted(t_list *stackA, t_list *stackB)
 	if (sorted == 0 && stackB == NULL)
 	{
 		write(1, "OK\n", 3);
+		free_stack(&stackA);
 		exit(0);
 	}
 }
@@ -52,19 +54,22 @@ void	is_sorted(t_list *stackA, t_list *stackB)
 void	check_double(t_list *stackA)
 {
 	t_list	*temp;
+	t_list	*courent;
 
-	while (stackA->next)
+	courent = stackA;
+	while (courent->next)
 	{
-		temp = stackA->next;
+		temp = courent->next;
 		while (temp)
 		{
-			if (stackA->data == temp->data)
+			if (courent->data == temp->data)
 			{
-				write(1, "Error\n", 6);
+				free_stack(&stackA);
+				write(2, "Error\n", 6);
 				exit(1);
 			}
 			temp = temp->next;
 		}
-		stackA = stackA->next;
+		courent = courent->next;
 	}
 }

@@ -6,19 +6,21 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:07 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/26 11:55:46 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:48:08 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insertnode(t_list **head, long data)
+void	insertnode(t_list **head, long data, char **argv, char *av)
 {
 	t_list	*newnode;
 	t_list	*current;
 
 	if (data < INT_MIN || data > INT_MAX)
 	{
+		free_stack(head);
+		free_av(argv);
 		write(2, "Error\n", 6);
 		exit(1);
 	}
@@ -36,6 +38,7 @@ void	insertnode(t_list **head, long data)
 		current = current->next;
 	}
 	current->next = newnode;
+	free(av);
 }
 
 int	size(t_list *stack)
@@ -68,6 +71,7 @@ void	is_sorted_or_double(t_list *stackA)
 		{
 			if (stackA->data == temp->data)
 			{
+				free_stack(&stackA);
 				write(2, "Error\n", 6);
 				exit(1);
 			}

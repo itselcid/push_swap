@@ -6,11 +6,35 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 11:07:40 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/26 10:56:50 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:24:03 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	min(t_list *stack)
+{
+	t_list	*temp;
+	int		min;
+	int		min_index;
+	int		i;
+
+	temp = stack;
+	min = temp->data;
+	min_index = 0;
+	i = 0;
+	while (temp != NULL)
+	{
+		if (temp->data < min)
+		{
+			min = temp->data;
+			min_index = i;
+		}
+		i++;
+		temp = temp->next;
+	}
+	return (min_index);
+}
 
 int	max_of_2_elements(int a, int b)
 {

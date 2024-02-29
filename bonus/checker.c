@@ -6,12 +6,20 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 11:54:48 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/26 15:50:44 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:41:38 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+void error_handler(char *line, t_list **stack_a, t_list **stack_b)
+{
+	write(2, "Error\n", 6);
+	free_stack(stack_a);
+	free_stack(stack_b);
+	free(line);
+	exit(1);
+}
 void	execute_command(char *line, t_list **stack_a, t_list **stack_b)
 {
 	if (ft_strncmp(line, "sa\n", 3) == 0)
@@ -34,11 +42,10 @@ void	execute_command(char *line, t_list **stack_a, t_list **stack_b)
 		reverse_rotate(stack_b);
 	else if (ft_strncmp(line, "rrr\n", 4) == 0)
 		rrr_bonus(stack_a, stack_b);
+	else if (ft_strncmp(line, "ss\n", 3) == 0)
+		ss_bonus(stack_a, stack_b);
 	else
-	{
-		write(1, "Error\n", 6);
-		exit(1);
-	}
+		error_handler(line,stack_a,stack_b);
 }
 
 void	checker(t_list **stack_a, t_list **stack_b)
@@ -50,6 +57,7 @@ void	checker(t_list **stack_a, t_list **stack_b)
 	while (line)
 	{
 		execute_command(line, stack_a, stack_b);
+		free(line);
 		line = get_next_line(0);
 	}
 	is_sorted(*stack_a, *stack_b);
@@ -72,9 +80,9 @@ int	main(int argc, char **argv)
 		str = ft_join(str, argv[i++]);
 	}
 	argv = ft_split(str, ' ');
-	i = 0;
-	while (argv[i])
-		insertnode(&stack_a, ft_atoi(argv[i++]));
+	i = -1;
+	while (argv[++i])
+		insertnode(&stack_a, ft_atoi(argv[i]), argv, argv[i]);
 	check_double(stack_a);
 	checker(&stack_a, &stack_b);
 	free_stack(&stack_a);

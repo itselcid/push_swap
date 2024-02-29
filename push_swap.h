@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:20 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/26 15:41:15 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:07:55 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ typedef struct node
 long			ft_atoi(const char *str);
 char			*ft_join(char const *s1, char const *s2);
 char			**ft_split(char const *s, char c);
-void			insertnode(t_list **head, long data);
+void			insertnode(t_list **head, long data, char **argv, char *av);
 void			is_sorted_or_double(t_list *stackA);
 void			sort_three(t_list **n);
 void			check_empty(char *av);
 void			free_stack(t_list **lst);
+void			free_av(char **av);
 int				size(t_list *stack);
 int				max(t_list *stack);
 int				min(t_list *stack);
@@ -87,6 +88,7 @@ void			rrb(t_list **head);
 void			rrr(t_list **a, t_list **b);
 void			pb(t_list **stackA, t_list **stackB);
 void			pa(t_list **stackA, t_list **stackB);
+void			ss_bonus(t_list **stackA, t_list **stackB);
 
 // get_next_line functions
 
