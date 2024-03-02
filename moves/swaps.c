@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:02:04 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/29 14:08:03 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:53:32 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	sb_bonus(t_list **stackB)
 {
 	t_list	*first ;
 	t_list	*second ;
-	
+
 	if (size(*stackB) < 2)
 		return ;
 	first = *stackB;

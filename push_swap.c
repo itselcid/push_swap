@@ -6,13 +6,13 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:07 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/29 16:48:08 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:52:53 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insertnode(t_list **head, long data, char **argv, char *av)
+void	insertnode(t_list **head, long data, char **argv, int i)
 {
 	t_list	*newnode;
 	t_list	*current;
@@ -20,7 +20,7 @@ void	insertnode(t_list **head, long data, char **argv, char *av)
 	if (data < INT_MIN || data > INT_MAX)
 	{
 		free_stack(head);
-		free_av(argv);
+		free_av(argv, i);
 		write(2, "Error\n", 6);
 		exit(1);
 	}
@@ -38,7 +38,7 @@ void	insertnode(t_list **head, long data, char **argv, char *av)
 		current = current->next;
 	}
 	current->next = newnode;
-	free(av);
+	free(argv[i]);
 }
 
 int	size(t_list *stack)

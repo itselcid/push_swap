@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:36:26 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/29 16:46:25 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:12:21 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,8 @@ void	free_stack(t_list **lst)
 	}
 }
 
-void	free_av(char **av)
+void	free_av(char **av, int i)
 {
-	int	i;
-
-	i = 0;
 	while (av[i])
 	{
 		free(av[i]);
@@ -53,7 +50,7 @@ long	ft_atoi(const char *str)
 		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9' && result <= 2147483649)
 	{
 		result = (result * 10) + str[i++] - '0';
 		digit_count++;

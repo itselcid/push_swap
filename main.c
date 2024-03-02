@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:44:22 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/29 16:45:41 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:47:44 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	main(int argc, char **argv)
 	argv = ft_split(str, ' ');
 	i = -1;
 	while (argv[++i])
-		insertnode(&stack_a, ft_atoi(argv[i]),argv,argv[i]);
+		insertnode(&stack_a, ft_atoi(argv[i]), argv, i);
 	is_sorted_or_double(stack_a);
 	if (argc == 3)
 		sa(&stack_a);

@@ -6,13 +6,13 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 11:54:48 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/29 16:41:38 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:46:03 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void error_handler(char *line, t_list **stack_a, t_list **stack_b)
+void	error_handler(char *line, t_list **stack_a, t_list **stack_b)
 {
 	write(2, "Error\n", 6);
 	free_stack(stack_a);
@@ -20,6 +20,7 @@ void error_handler(char *line, t_list **stack_a, t_list **stack_b)
 	free(line);
 	exit(1);
 }
+
 void	execute_command(char *line, t_list **stack_a, t_list **stack_b)
 {
 	if (ft_strncmp(line, "sa\n", 3) == 0)
@@ -45,7 +46,7 @@ void	execute_command(char *line, t_list **stack_a, t_list **stack_b)
 	else if (ft_strncmp(line, "ss\n", 3) == 0)
 		ss_bonus(stack_a, stack_b);
 	else
-		error_handler(line,stack_a,stack_b);
+		error_handler(line, stack_a, stack_b);
 }
 
 void	checker(t_list **stack_a, t_list **stack_b)
