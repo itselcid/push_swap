@@ -108,7 +108,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		check_empty(argv[i]);
+		check_empty(argv[i], str);
 		str = ft_join(str, argv[i++]);
 	}
 	argv = ft_split(str, ' ');

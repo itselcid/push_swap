@@ -77,13 +77,13 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		check_empty(argv[i]);
+		check_empty(argv[i], str);
 		str = ft_join(str, argv[i++]);
 	}
 	argv = ft_split(str, ' ');
 	i = -1;
 	while (argv[++i])
-		insertnode(&stack_a, ft_atoi(argv[i]), argv, argv[i]);
+		insertnode(&stack_a, ft_atoi(argv[i]), argv, i);
 	check_double(stack_a);
 	checker(&stack_a, &stack_b);
 	free_stack(&stack_a);

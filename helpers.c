@@ -92,7 +92,7 @@ char	*ft_join(char const *s1, char const *s2)
 	return (str);
 }
 
-void	check_empty(char *av)
+void	check_empty(char *av, char *str)
 {
 	int	i;
 
@@ -101,6 +101,8 @@ void	check_empty(char *av)
 		i++;
 	if (av[i] == '\0')
 	{
+		if (str != NULL)
+			free(str);
 		write(2, "Error\n", 6);
 		exit(1);
 	}

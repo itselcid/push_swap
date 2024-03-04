@@ -16,7 +16,6 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stddef.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -36,7 +35,7 @@ char			**ft_split(char const *s, char c);
 void			insertnode(t_list **head, long data, char **argv, int i);
 void			is_sorted_or_double(t_list *stackA);
 void			sort_three(t_list **n);
-void			check_empty(char *av);
+void			check_empty(char *av, char *str);
 void			free_stack(t_list **lst);
 void			free_av(char **av, int i);
 int				size(t_list *stack);
