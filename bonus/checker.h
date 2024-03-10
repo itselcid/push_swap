@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 15:12:30 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/09 15:13:10 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:19:42 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct node
 
 // checker functions
 long			ft_atoi(const char *str);
-int				init_to_null(char **str);
+int				init_to_null(char **str, t_list **stack_a, t_list **stack_b);
 void			insertnode(t_list **head, long data, char **argv, int i);
 void			is_sorted(t_list *stackA, t_list *stackB);
 void			check_double(t_list *stackA);

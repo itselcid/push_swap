@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:20 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/09 14:59:13 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:20:07 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct node
 }				t_list;
 
 long			ft_atoi(const char *str);
-int				init_to_null(char **str);
+int				init_to_null(char **str, t_list **stack_a, t_list **stack_b);
 char			*ft_join(char *s1, char *s2);
 char			**ft_split(char const *s, char c);
 void			insertnode(t_list **head, long data, char **argv, int i);

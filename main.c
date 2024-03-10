@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:44:22 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/10 21:48:12 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:24:18 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	sort_stack(t_list **stack_a, t_list **stackB)
 	push_to_a(stack_a, stackB);
 	rotate_until_sorted(stack_a);
 }
-
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -103,7 +102,7 @@ int	main(int argc, char **argv)
 	int		i;
 	char	*str;
 
-	if (init_to_null(&str) && argc == 1)
+	if (init_to_null(&str, &stack_a, &stack_b) && argc == 1)
 		return (0);
 	i = 1;
 	while (i < argc)

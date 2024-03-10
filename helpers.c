@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:36:26 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/10 21:33:51 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:20:29 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ void	check_empty(char *av, char *str)
 	}
 }
 
-int	init_to_null(char **str)
+int	init_to_null(char **str, t_list **stack_a, t_list **stack_b)
 {
 	*str = NULL;
+	*stack_a = NULL;
+	*stack_b = NULL;
 	return (1);
 }
