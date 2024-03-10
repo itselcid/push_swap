@@ -6,11 +6,11 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:11:05 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/29 16:38:36 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:34:16 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "checker.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

@@ -6,11 +6,11 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 11:54:48 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/01 11:46:03 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:34:21 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "checker.h"
 
 void	error_handler(char *line, t_list **stack_a, t_list **stack_b)
 {
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 	int		i;
 	char	*str;
 
-	if (argc == 1)
+	if (init_to_null(&str) && argc == 1)
 		return (0);
 	i = 1;
 	while (i < argc)

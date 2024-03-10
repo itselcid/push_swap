@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:44:22 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/29 17:47:44 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:48:12 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 	int		i;
 	char	*str;
 
-	if (argc == 1)
+	if (init_to_null(&str) && argc == 1)
 		return (0);
 	i = 1;
 	while (i < argc)
@@ -116,9 +116,9 @@ int	main(int argc, char **argv)
 	while (argv[++i])
 		insertnode(&stack_a, ft_atoi(argv[i]), argv, i);
 	is_sorted_or_double(stack_a);
-	if (argc == 3)
+	if (size(stack_a) == 2)
 		sa(&stack_a);
-	else if (argc == 4)
+	else if (size(stack_a) == 3)
 		sort_three(&stack_a);
 	else
 		sort_stack(&stack_a, &stack_b);

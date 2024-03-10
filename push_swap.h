@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:20 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/02/29 17:51:37 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/09 14:59:13 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stddef.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
 
 typedef struct node
 {
@@ -30,7 +27,8 @@ typedef struct node
 }				t_list;
 
 long			ft_atoi(const char *str);
-char			*ft_join(char const *s1, char const *s2);
+int				init_to_null(char **str);
+char			*ft_join(char *s1, char *s2);
 char			**ft_split(char const *s, char c);
 void			insertnode(t_list **head, long data, char **argv, int i);
 void			is_sorted_or_double(t_list *stackA);
@@ -61,20 +59,6 @@ void			push_to_a(t_list **stackA, t_list **stackB);
 void			sort_stack(t_list **stackA, t_list **stackB);
 void			rotate_until_sorted(t_list **stackA);
 
-// checker functions
-void			is_sorted(t_list *stackA, t_list *stackB);
-void			check_double(t_list *stackA);
-void			checker(t_list **stack_a, t_list **stack_b);
-void			execute_command(char *line, t_list **stack_a, t_list **stack_b);
-int				ft_strncmp(const char *s1, const char *s2, size_t n);
-
-void			sa_bonus(t_list **head);
-void			sb_bonus(t_list **stackB);
-void			pb_bonus(t_list **stackA, t_list **stackB);
-void			pa_bonus(t_list **stackA, t_list **stackB);
-void			rr_bonus(t_list **a, t_list **b);
-void			rrr_bonus(t_list **a, t_list **b);
-
 void			sa(t_list **head);
 void			sb(t_list **stackB);
 void			rotate(t_list **head);
@@ -87,18 +71,5 @@ void			rrb(t_list **head);
 void			rrr(t_list **a, t_list **b);
 void			pb(t_list **stackA, t_list **stackB);
 void			pa(t_list **stackA, t_list **stackB);
-void			ss_bonus(t_list **stackA, t_list **stackB);
-
-// get_next_line functions
-
-char			*get_next_line(int fd);
-char			*ft_line(char *str);
-char			*ft_rest(char *str);
-char			*ft_strjoin(char *s1, char *s2);
-size_t			ft_strlen(const char *s);
-char			*ft_strncpy(char *dest, const char *src, size_t n);
-char			*ft_strchr(const char *s, int c);
-char			*handle_eof(int chars_readed, char *rest);
-char			*handle_line(char *rest);
 
 #endif

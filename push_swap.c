@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:07 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/01 11:52:53 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 21:37:49 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	insertnode(t_list **head, long data, char **argv, int i)
 	if (*head == NULL)
 	{
 		*head = newnode;
-		return ;
+		return (free(argv[i]));
 	}
 	current = *head;
 	while (current->next != NULL)
