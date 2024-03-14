@@ -29,6 +29,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 void	is_sorted(t_list *stackA, t_list *stackB)
 {
 	int	sorted;
+	t_list *tmp;
 
 	if (stackA == NULL)
 	{
@@ -37,6 +38,7 @@ void	is_sorted(t_list *stackA, t_list *stackB)
 		exit(0);
 	}
 	sorted = 0;
+	tmp = stackA;
 	while (stackA->next)
 	{
 		if (stackA->data > stackA->next->data)
@@ -46,7 +48,8 @@ void	is_sorted(t_list *stackA, t_list *stackB)
 	if (sorted == 0 && stackB == NULL)
 	{
 		write(1, "OK\n", 3);
-		free_stack(&stackA);
+		free_stack(&tmp);
+		free_stack(&stackB);
 		exit(0);
 	}
 }

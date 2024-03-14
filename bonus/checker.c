@@ -64,7 +64,10 @@ void	checker(t_list **stack_a, t_list **stack_b)
 	is_sorted(*stack_a, *stack_b);
 	write(1, "KO\n", 3);
 }
-
+void f(void)
+{
+	system("leaks checker");
+}
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -72,6 +75,7 @@ int	main(int argc, char **argv)
 	int		i;
 	char	*str;
 
+	atexit(f);
 	if (init_to_null(&str, &stack_a, &stack_b) && argc == 1)
 		return (0);
 	i = 1;
@@ -81,10 +85,10 @@ int	main(int argc, char **argv)
 		str = ft_join(str, argv[i++]);
 	}
 	argv = ft_split(str, ' ');
-	free(argv);
 	i = -1;
 	while (argv[++i])
 		insertnode(&stack_a, ft_atoi(argv[i]), argv, i);
+	free(argv);
 	check_double(stack_a);
 	checker(&stack_a, &stack_b);
 	free_stack(&stack_a);

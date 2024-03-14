@@ -33,6 +33,7 @@ void	free_av(char **av, int i)
 		free(av[i]);
 		i++;
 	}
+	free(av);
 }
 
 long	ft_atoi(const char *str)
@@ -57,8 +58,7 @@ long	ft_atoi(const char *str)
 	}
 	if (str[i] != '\0' || digit_count == 0)
 	{
-		write(2, "Error\n", 6);
-		exit(1);
+		return (2147483649);
 	}
 	return (sign * result);
 }
