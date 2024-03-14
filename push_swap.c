@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:07 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/10 21:37:49 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:55:26 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,12 @@ int	size(t_list *stack)
 	return (count);
 }
 
-void	is_sorted_or_double(t_list *stackA)
+void	is_sorted_or_double(t_list *stackA, char **argv)
 {
 	t_list	*temp;
 	int		sorted;
 
+	free(argv);
 	sorted = 0;
 	while (stackA->next)
 	{

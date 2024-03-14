@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:44:22 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/10 22:24:18 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/14 02:12:16 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	sort_stack(t_list **stack_a, t_list **stackB)
 	push_to_a(stack_a, stackB);
 	rotate_until_sorted(stack_a);
 }
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -114,7 +115,7 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (argv[++i])
 		insertnode(&stack_a, ft_atoi(argv[i]), argv, i);
-	is_sorted_or_double(stack_a);
+	is_sorted_or_double(stack_a, argv);
 	if (size(stack_a) == 2)
 		sa(&stack_a);
 	else if (size(stack_a) == 3)

@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:21:20 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/10 22:20:07 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/10 22:55:44 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int				init_to_null(char **str, t_list **stack_a, t_list **stack_b);
 char			*ft_join(char *s1, char *s2);
 char			**ft_split(char const *s, char c);
 void			insertnode(t_list **head, long data, char **argv, int i);
-void			is_sorted_or_double(t_list *stackA);
+void			is_sorted_or_double(t_list *stackA, char **argv);
 void			sort_three(t_list **n);
 void			check_empty(char *av, char *str);
 void			free_stack(t_list **lst);

@@ -6,7 +6,7 @@
 /*   By: oessaadi <oessaadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 11:54:48 by oessaadi          #+#    #+#             */
-/*   Updated: 2024/03/10 21:34:21 by oessaadi         ###   ########.fr       */
+/*   Updated: 2024/03/14 02:13:03 by oessaadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ void	checker(t_list **stack_a, t_list **stack_b)
 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a ;
-	t_list	*stack_b ;
+	t_list	*stack_a;
+	t_list	*stack_b;
 	int		i;
 	char	*str;
 
-	if (init_to_null(&str) && argc == 1)
+	if (init_to_null(&str, &stack_a, &stack_b) && argc == 1)
 		return (0);
 	i = 1;
 	while (i < argc)
@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 		str = ft_join(str, argv[i++]);
 	}
 	argv = ft_split(str, ' ');
+	free(argv);
 	i = -1;
 	while (argv[++i])
 		insertnode(&stack_a, ft_atoi(argv[i]), argv, i);
