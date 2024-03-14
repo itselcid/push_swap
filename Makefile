@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 CNAME = checker
 SRC = main.c push_swap.c sort.c push_from_a_to_b.c  helpers.c split.c join.c \

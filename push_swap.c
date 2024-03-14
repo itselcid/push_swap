@@ -41,26 +41,19 @@ void	insertnode(t_list **head, long data, char **argv, int i)
 	free(argv[i]);
 }
 
-int	size(t_list *stack)
+void double_found(t_list *stack_a)
 {
-	int		count;
-	t_list	*temp;
-
-	count = 0;
-	temp = stack;
-	while (temp != NULL)
-	{
-		count++;
-		temp = temp->next;
-	}
-	return (count);
+			free_stack(&stack_a);
+			write(2, "Error\n", 6);
+			exit(1);
 }
-
 void	is_sorted_or_double(t_list *stackA, char **argv)
 {
 	t_list	*temp;
 	int		sorted;
+	t_list	*stackA_head;
 
+	stackA_head = stackA;
 	free(argv);
 	sorted = 0;
 	while (stackA->next)
@@ -71,17 +64,13 @@ void	is_sorted_or_double(t_list *stackA, char **argv)
 		while (temp)
 		{
 			if (stackA->data == temp->data)
-			{
-				free_stack(&stackA);
-				write(2, "Error\n", 6);
-				exit(1);
-			}
+				double_found(stackA_head);
 			temp = temp->next;
 		}
 		stackA = stackA->next;
 	}
 	if (sorted == 0)
-		exit(0);
+		free_exit(&stackA_head);
 }
 
 void	sort_three(t_list **n)

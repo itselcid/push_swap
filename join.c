@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+int	size(t_list *stack)
+{
+	int		count;
+	t_list	*temp;
+
+	count = 0;
+	temp = stack;
+	while (temp != NULL)
+	{
+		count++;
+		temp = temp->next;
+	}
+	return (count);
+}
+
+void	free_exit(t_list **stackA)
+{
+    free_stack(stackA);
+    exit(0);
+}
 char	*ft_strcpy(char *s1, char *s2)
 {
 	int	i;

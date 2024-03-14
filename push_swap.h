@@ -26,6 +26,7 @@ typedef struct node
 	struct node	*next;
 }				t_list;
 
+void			free_exit(t_list **stack_a);
 long			ft_atoi(const char *str);
 int				init_to_null(char **str, t_list **stack_a, t_list **stack_b);
 char			*ft_join(char *s1, char *s2);

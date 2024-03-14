@@ -68,6 +68,7 @@ void f(void)
 {
 	system("leaks checker");
 }
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
